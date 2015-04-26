@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var ifeelaApp = angular
   .module('ifeelaApp', [
     'ngAnimate',
     'ngCookies',
@@ -18,7 +18,9 @@ angular
     'ngTouch',
     'firebase'
   ])
-  .config(function ($routeProvider) {
+  .constant('FBURL', 'https://ifeelaapp.firebaseio.com/')
+  .constant('MSGURL', 'https://ifeelaapp.firebaseio.com/messages')
+  .config(['$routeProvider',  function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -30,14 +32,13 @@ angular
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'RegistrationController'
       })
       .when('/login', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl'
+        controller: 'RegistrationController'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
       });
-  })
-    .constant('FBURL', 'https://ifeelaapp.firebaseio.com/')
-    .constant('MSGURL', 'https://ifeelaapp.firebaseio.com/messages');
+  }]);

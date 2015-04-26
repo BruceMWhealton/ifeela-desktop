@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the firebaseTutsPlusApp
  */
-angular.module('firebaseTutsPlusApp')
+angular.module('ifeelaApp')
   .controller('MainCtrl', function ($scope, $timeout, MessageService) {
 
     $scope.currentUser = null;
