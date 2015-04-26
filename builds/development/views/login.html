@@ -4,12 +4,13 @@
 
 		<p class="error formerror" ng-show="message">{{ message }}</p>
 	  <div class="form-group">
-		<label>Email address</label>
+		<p><label>Email address</label></p>
 		<input type="email" name="email" placeholder="Email" 
 		 ng-model="user.email" ng-required="true">
 	  </div>
 		 <p class="error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">Must be a valid Email</p>
 	  <div class="form-group">
+	  <p>	<label>Password</label></p>
 		<input type="password" name="password" placeholder="Password"
 		ng-model="user.password" ng-required="true">
 	  </div>	

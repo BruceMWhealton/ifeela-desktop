@@ -1,12 +1,12 @@
-myApp.factory('Authentication', function($firebase, $firebaseAuth, $rootScope, $routeParams, $location, FBURL) {
+ifeelaApp.factory('Authentication', function($firebase, $firebaseAuth, $rootScope, $routeParams, $location, FBURL) {
 
 	var ref = new Firebase(FBURL);
 	var auth = $firebaseAuth(ref);
 
 	auth.$onAuth(function(authUser) {
 		if (authUser) {
-			var ref = new Firebase(FIREBASE_URL + 'users/' + authUser.uid);
-			console.log(FIREBASE_URL + 'users/' + authUser.uid);
+			var ref = new Firebase(FBURL + 'users/' + authUser.uid);
+			console.log(FBURL + 'users/' + authUser.uid);
 			var user = $firebase(ref).$asObject();
 			$rootScope.currentUser = user;
 		} else {
@@ -37,11 +37,14 @@ myApp.factory('Authentication', function($firebase, $firebaseAuth, $rootScope, $
 				var firebaseUsers = $firebase(ref);
 
 				var userInfo = {
-					date: Firebase.ServerValue.TIMESTAMP,
+					registrationDate: Firebase.ServerValue.TIMESTAMP,
 					regUser: regUser.uid,
 					firstname: user.firstname,
 					lastname: user.lastname,
-					email: user.email
+					email: user.email,
+					zipcode: user.zipcode,
+					city: user.city,
+					state: user.state
 				}; // user info
 
 				firebaseUsers.$set(regUser.uid, userInfo);
@@ -58,4 +61,4 @@ myApp.factory('Authentication', function($firebase, $firebaseAuth, $rootScope, $
 
 	}; //myObject
 	return myObject;
-}); // myApp Factory
+}); // ifeelaApp Factory

@@ -34,11 +34,11 @@ var ifeelaApp = angular
         templateUrl: 'views/login.html',
         controller: 'RegistrationController'
       })
-      .when('/login', {
+      .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegistrationController'
       })
       .otherwise({
-        redirectTo: '/login'
+        redirectTo: '/'
       });
   }]);

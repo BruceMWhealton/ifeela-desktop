@@ -1,9 +1,10 @@
 <div class="jumbotron">
   <h2>iFeela Chat</h2>
-  
+  <div hide="currentUser">
   <p class="text-left">
-    <a type="button" class="btn btn-primary" data-ng-href="#/login">Login</a>
-    <a type="button" class="btn btn-success" data-ng-href="#/register">Register</a>
+    <a type="button" ng-hide="currentUser" class="btn btn-primary" ng-href="#/login">Login</a>
+    <a type="button" ng-hide="currentUser"  class="btn btn-success" ng-href="#/register">Register</a>
   </p>
 </div>
+   <p type="button" class="btn btn-primary" data-ng-href="#/chat">Chat</p>
 </div>
