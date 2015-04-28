@@ -57,7 +57,7 @@ ifeelaApp.factory('Authentication', function($firebase, $firebaseAuth, $rootScop
 		
 		waitForAuth: function() {
 			return auth.$waitForAuth();
-		}, // Wait until user is Authenticated
+		} // Wait until user is Authenticated
 
 	}; //myObject
 	return myObject;

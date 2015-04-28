@@ -38,6 +38,10 @@ var ifeelaApp = angular
         templateUrl: 'views/register.html',
         controller: 'RegistrationController'
       })
+      .when('/userprefs', {
+        templateUrl: 'views/userpreferences.html',
+        controller: 'UserprefsController'
+      })
       .otherwise({
         redirectTo: '/'
       });

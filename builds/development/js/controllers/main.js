@@ -8,10 +8,10 @@
  * Controller of the firebaseTutsPlusApp
  */
 angular.module('ifeelaApp')
-  .controller('MainCtrl', function ($scope, $timeout, MessageService) {
+  .controller('MainCtrl', function ($scope, $timeout, MessageService, $rootScope) {
 
-    $scope.currentUser = null;
-    $scope.currentText = null;
+    //$scope.currentUser = null;
+    //$scope.currentText = null;
     $scope.messages = [];
 
 
@@ -31,7 +31,6 @@ angular.module('ifeelaApp')
 
       var promise = MessageService.add(newMessage);
       promise.then(function(data)  {
-      	console.log(data.key());
       });
     };
 

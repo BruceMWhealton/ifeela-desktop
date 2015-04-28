@@ -1,10 +1,10 @@
-ifeelaApp.controller('RegistrationController',
-  function($scope, $firebaseAuth, $location, Authentication, $rootScope) {
+ifeelaApp.controller('UserprefsController',
+  function($scope, $location, $rootScope, FBURL) {
 
-  var ref = new Firebase('https://ifeelaapp.firebaseio.com/');
-  var auth = $firebaseAuth(ref);
+  var ref = new Firebase(FBURL);
 
-  $scope.login = function() {
+
+  $scope.updateFavoriteFoods = function() {
     Authentication.login($scope.user)
     .then(function(user) {
       $location.path('#/userprefs');
