@@ -43,6 +43,6 @@ var ifeelaApp = angular
         controller: 'UserprefsController'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/userprefs'
       });
   }]);
