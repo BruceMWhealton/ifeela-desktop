@@ -3,7 +3,6 @@ ifeelaApp.controller('UserprefsController',
 
   var ref = new Firebase(FBURL);
 
-
   $scope.updateFavoriteFoods = function() {
     Authentication.login($scope.user)
     .then(function(user) {
@@ -12,17 +11,5 @@ ifeelaApp.controller('UserprefsController',
       $scope.message = error.message;
     });
   }; //login
-
-
-
-	$scope.register = function() {
-		Authentication.register($scope.user)
-			.then(function(user) {
-				Authentication.login($scope.user);
-				$location.path('#/login');
-			}).catch(function(error) {
-				$scope.message = error.message;
-			});
-	}; //register
 
 }); //RegistrationController

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc overview
- * @name iFeelaApp 
+ * @name iFeelaApp
  * @description
  * # iFeelaApp
  *
@@ -19,30 +19,54 @@ var ifeelaApp = angular
     'firebase'
   ])
   .constant('FBURL', 'https://ifeelaapp.firebaseio.com/')
-  .constant('MSGURL', 'https://ifeelaapp.firebaseio.com/messages')
-  .config(['$routeProvider',  function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/chat', {
-        templateUrl: 'views/chat.html',
-        controller: 'ChatCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'RegistrationController'
-      })
-      .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'RegistrationController'
-      })
-      .when('/userprefs', {
-        templateUrl: 'views/userpreferences.html',
-        controller: 'UserprefsController'
-      })
-      .otherwise({
-        redirectTo: '/userprefs'
-      });
-  }]);
+  .constant('MSGURL', 'https://ifeelaapp.firebaseio.com/messages'); // unrelated error
+
+ifeelaApp.run(['$rootScope', '$location', function($rootScope, $location) {
+  $rootScope.$on('$routeChangeError', function(event, next, previous, error) {
+    if (error === 'AUTH_REQUIRED') {
+      $rootScope.message = 'Sorry, you must log in to access that page.';
+      $location.path('/login');
+    }
+  });
+}]).config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/chat', {
+      templateUrl: 'views/chat.html',
+      controller: 'ChatCtrl',
+      resolve: {
+        currentAuth: function(Authentication) {
+          return Authentication.requireAuth();
+        }
+      }
+    })
+    .when('/login', {
+      templateUrl: 'views/login.html',
+      controller: 'RegistrationController'
+    })
+    .when('/register', {
+      templateUrl: 'views/register.html',
+      controller: 'RegistrationController'
+    })
+    .when('/userprefs', {
+      templateUrl: 'views/userpreferences.html',
+      controller: 'UserprefsController',
+      resolve: {
+        currentAuth: function(Authentication) {
+          return Authentication.requireAuth();
+        }
+      }
+    })
+    .when('/admin', {
+      templateUrl: 'views/admin.html',
+      controller: 'AdminController',
+      resolve: {
+        currentAuth: function(Authentication) {
+          return Authentication.requireAuth();
+        }
+      }
+    })
+    .otherwise({
+      redirectTo: '/login'
+    });
+}]);
+

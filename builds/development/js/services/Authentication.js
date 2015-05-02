@@ -1,4 +1,4 @@
-ifeelaApp.factory('Authentication', function($firebase, $firebaseAuth, $rootScope, $routeParams, $location, FBURL) {
+ifeelaApp.factory('Authentication', function($firebaseObject, $firebaseAuth, $rootScope, $routeParams, $location, FBURL) {
 
 	var ref = new Firebase(FBURL);
 	var auth = $firebaseAuth(ref);
@@ -7,7 +7,7 @@ ifeelaApp.factory('Authentication', function($firebase, $firebaseAuth, $rootScop
 		if (authUser) {
 			var ref = new Firebase(FBURL + 'users/' + authUser.uid);
 			console.log(FBURL + 'users/' + authUser.uid);
-			var user = $firebase(ref).$asObject();
+			var user = $firebaseObject(ref);
 			$rootScope.currentUser = user;
 		} else {
 			$rootScope.currentUser = '';

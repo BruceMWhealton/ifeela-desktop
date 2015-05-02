@@ -3,25 +3,28 @@
 		<div class="col-xs-6 col-sm-6 col-md-6 col-md-offset-3">
 			<h2>Update Your Information and Choices</h2>
 		</div>
-		<form 
 	</div>
 </section>
 <section class="jumbotron">
 	<form name="myform"  novalidate ng-submit="UpdateFavoriteFoods()">
 		<p>Please select your favorite foods for dinner from the form below.</p>
-
 		<p class="error formerror" ng-show="message">{{ message }}</p>
-	  <div class="form-group">
-		<p><label>Favorite Foods</label></p>
-		<input type="email" name="email" placeholder="Email" 
-		 ng-model="user.email" ng-required="true">
-	  </div>
-		 <p class="error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">Must be a valid Email</p>
-	  <div class="form-group">
-	  <p>	<label>Password</label></p>
-		<input type="password" name="password" placeholder="Password"
-		ng-model="user.password" ng-required="true">
-	  </div>	
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button" class="btn btn-default">Italian</button>
+			<button type="button" class="btn btn-default">Mexican</button>
+			<button type="button" class="btn btn-default"></button>
+		</div>
+		<div class="form-group">
+			<p><label>Favorite Foods</label></p>
+			<input type="email" name="email" placeholder="Email"
+			ng-model="user.email" ng-required="true">
+		</div>
+		<p class="error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">Must be a valid Email</p>
+		<div class="form-group">
+			<p>	<label>Password</label></p>
+			<input type="password" name="password" placeholder="Password"
+			ng-model="user.password" ng-required="true">
+		</div>
 		<p class="error validationerror" ng-show="myform.password.$invalid && myform.password.$touched">Password is required.</p>
 		<button type="submit" class="btn btn-success" ng-disabled="myform.$invalid">Login</button>
 		<p>or <a href="#/register">register</a></p>

@@ -1,5 +1,11 @@
-<section class="jumbotron">
-	<form name="myform"  novalidate ng-submit="login()">
+<section class="jumbotron login">
+	<ul class="nav nav-pills nav-stacked">
+		<li class="active"><a role="Signup or Signin" href="#">Login With Facebook</a></li>
+		<li class="active"><a role="Signup or Signin" href="#">Create User/Register</a></li>
+		<li class="active"><a role="Signup or Signin" href="#loginForm"></a></li>
+	</ul>
+
+	<form name="myform"  novalidate ng-submit="login()" id="loginForm">
 		<p>Login to access site features</p>
 
 		<p class="error formerror" ng-show="message">{{ message }}</p>
@@ -16,6 +22,6 @@
 	  </div>	
 		<p class="error validationerror" ng-show="myform.password.$invalid && myform.password.$touched">Password is required.</p>
 		<button type="submit" class="btn btn-success" ng-disabled="myform.$invalid">Login</button>
-		<p>or <a href="#/register">register</a></p>
+		<h2>or <a href="#/register">register</a></h2>
 	</form>
 </section>
